@@ -2,7 +2,7 @@ import { TinyEmitter } from 'tiny-emitter';
 
 export type Event = { type: string; payload: any };
 
-function makeTogglerEventBuzz(eventId: string) {
+function makeTogglerEventBus(eventId: string) {
   const name = `event::${eventId}`;
   const bus = new TinyEmitter();
 
@@ -29,4 +29,4 @@ function makeTogglerEventBuzz(eventId: string) {
   return { off, turnOn, turnOff, onToggle };
 }
 
-export default { loading: makeTogglerEventBuzz('loading') };
+export default { loading: makeTogglerEventBus('loading') };
