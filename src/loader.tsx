@@ -1,16 +1,16 @@
-import eventBuzz from './event-buzz';
+import eventBus from './event-bus';
 import { useEffect, useState } from 'react';
 
 export function Loader() {
   const [modifiers, setModifiers] = useState('opacity-0 invisible');
 
   useEffect(() => {
-    eventBuzz.loading.onToggle(({ payload }) => {
+    eventBus.loading.onToggle(({ payload }) => {
       if (payload) setModifiers('opacity-100 visible');
       else setModifiers('opacity-0 invisible');
     });
     return () => {
-      eventBuzz.loading.off();
+      eventBus.loading.off();
     };
   }, []);
 

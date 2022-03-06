@@ -1,10 +1,10 @@
-import eventBuzz from './event-buzz';
+import eventBus from './event-bus';
 
 export function brokenPromise() {
-  eventBuzz.loading.turnOn();
+  eventBus.loading.turnOn();
   return new Promise((_, reject) => {
     setTimeout(() => {
-      eventBuzz.loading.turnOff();
+      eventBus.loading.turnOff();
       reject(new Error('Deu ruim aqui pae!'));
     }, 3000);
   });

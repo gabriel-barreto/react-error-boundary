@@ -4,14 +4,14 @@ export type Event = { type: string; payload: any };
 
 function makeTogglerEventBuzz(eventId: string) {
   const name = `event::${eventId}`;
-  const buzz = new TinyEmitter();
+  const bus = new TinyEmitter();
 
   function propagate({ type, payload }: Event) {
-    buzz.emit(name, { type, payload });
+    bus.emit(name, { type, payload });
   }
 
   function off() {
-    buzz.off(name);
+    bus.off(name);
   }
 
   function turnOn() {
@@ -23,7 +23,7 @@ function makeTogglerEventBuzz(eventId: string) {
   }
 
   function onToggle(callback: (event: Event) => void) {
-    buzz.on(name, callback);
+    bus.on(name, callback);
   }
 
   return { off, turnOn, turnOff, onToggle };
